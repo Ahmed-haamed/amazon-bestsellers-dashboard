@@ -63,10 +63,7 @@ page = st.navigation(
             title="Executive overview",
             icon=":material/dashboard:",
         ),
-        st.Page(
-            "app_pages/data_quality.py",
-            title="Data quality",
-            icon=":material/fact_check:",
+        
         ),
         st.Page(
             "app_pages/exploratory_analysis.py",
