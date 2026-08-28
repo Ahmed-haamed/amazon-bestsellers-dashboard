@@ -1,0 +1,11 @@
+﻿issue,severity,affected_records,what_happened,likely_cause,action
+Missing or blank required values,Pass,0,No missing values were found in this file.,Source completeness or extraction gaps.,Rows failing required-field checks are removed and counted.
+Encoding / Unicode artifacts,Fixed,3,Windows-1252 punctuation appeared as control characters.,An earlier encoding conversion treated smart punctuation incorrectly.,"Repair punctuation, normalize to NFC, and preserve readable text."
+Author or title spelling variants,Fixed,9,"The same entity used different punctuation, spacing, or capitalization.",Manual entry and inconsistent catalog naming.,Map only verified aliases to one canonical display name.
+Exact duplicate rows,Pass,0,Rows matched across every business field.,Potential duplicate extraction.,Remove exact duplicates only; keep meaningful repeats.
+Repeated titles across years,Context,295,95 titles appear more than once.,"This is an annual Top-50 list, so repeated titles represent persistence.",Retain records and aggregate by unique title when the question is book-level.
+"Same title and year, different price",Review,6,3 extra records share title and year.,"Likely separate formats or editions, but the source has no edition field.","Retain, flag, and avoid assuming these are accidental duplicates."
+Zero price,Review,12,Price is exactly zero for some listings.,"Could be a promotion, a free edition, or missing price encoded as zero.",Do not impute without evidence; flag and exclude from paid-price sensitivity checks.
+Statistical outliers,Context,64,"IQR rules flag premium manuals, box sets, viral books, or unusually low ratings.","Real product differences and heavy-tailed engagement, not necessarily errors.","Keep outliers, show robust medians, and use a log scale for reviews."
+Truncated source text,Review,14,Some titles or authors end with an ellipsis or appear visibly cut off.,The upstream listing/export likely truncated long display text.,Flag only; restoring full text requires a trusted catalog source.
+Review count repeated across years,High context,93,Nearly every recurring title keeps the same review count in each year.,Reviews are probably a single snapshot copied to each annual appearance.,Never interpret review counts as annual growth or sum them across years.
